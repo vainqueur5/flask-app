@@ -1,3 +1,4 @@
 flask
 flask-socketio
 eventlet==0.33.3
+gunicorn video_chat_app:app

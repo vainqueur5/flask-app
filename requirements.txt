@@ -1,5 +1,5 @@
 flask
 flask-socketio
 eventlet==0.33.3
-gunicorn app:app
+gunicorn 
 setuptools

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat Vidéo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h3>Bienvenue, <strong>{{ username }}</strong> | <a href="/logout">Déconnexion</a></h3>
+
+    <div class="container">
+        <video id="localVideo" autoplay muted playsinline></video>
+        <video id="remoteVideo" autoplay playsinline></video>
+    </div>
+
+    <select id="userList">
+        <option disabled selected>Choisir un utilisateur</option>
+    </select>
+    <button onclick="startCall()">📞 Appel</button>
+
+    <script>
+        const username = "{{ username }}";
+    </script>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+</body>
+</html>

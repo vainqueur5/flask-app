@@ -1,15 +1,21 @@
 import eventlet
 eventlet.monkey_patch()
 
-from flask import Flask, render_template, request, redirect, session, url_for
-from flask_socketio import SocketIO, emit
+from flask import Flask, render_template
+from flask_socketio import SocketIO
 import os, json
 
 
 
 app = Flask(__name__)
-app.secret_key = "secret123"
-socketio = SocketIO(app)
+socketio = SocketIO(app, async_mode='eventlet')
+
+@app.route('/')
+def index():
+    return 'Hello, Render with Flask-SocketIO + eventlet!'
+
+if __name__ == '__main__':
+    socketio.run(app, host='0.0.0.0', port=5000)
 connected_users = {}
 
 USERS_FILE = "users.json"
